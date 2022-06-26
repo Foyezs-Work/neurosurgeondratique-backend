@@ -1,5 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const bodyParser = require('body-parser');
+
 // const { chats } = require("./data/data");
 const connectDB = require("./config/db");
 const colors = require("colors");
@@ -12,7 +14,14 @@ dotenv.config();
 
 const PORT = process.env.PORT || 4200;
 const app = express();
-app.use(cors())
+app.use(cors());
+
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({
+    limit: '50mb',
+    extended: true,
+    parameterLimit: 50000
+}));
 connectDB();
 
 app.use(express.json()); //to accept json data;

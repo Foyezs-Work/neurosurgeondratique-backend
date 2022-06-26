@@ -9,6 +9,7 @@
   "author": "Fayez",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "bcryptjs": "^2.4.3",
     "brcypt": "^1.0.1",
     "colors": "^1.4.0",
