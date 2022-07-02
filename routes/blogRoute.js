@@ -1,11 +1,11 @@
 const express = require("express");
-const { createVideoItem, getVideoList, getSingleVideo, updateSingleVideo, deleteVideo } = require("../controllers/VideoGalleryController");
-const videoRouter = express.Router();
+const { createBlog, getBlogList, getSingleBlog, updateSingleBlog, deleteBlog, } = require("../controllers/blogController");
+const blogRouter = express.Router();
 
-videoRouter.route('/add-video').post(createVideoItem)
-videoRouter.route('/video-list').get(getVideoList)
-videoRouter.route('/single-video/:id').get(getSingleVideo)
-videoRouter.route('/update-video').put(updateSingleVideo)
-videoRouter.route('/delete-video/:id').delete(deleteVideo)
+blogRouter.route('/add-blog').post(createBlog)
+blogRouter.route('/blog-list').get(getBlogList)
+blogRouter.route('/single-blog/:id').get(getSingleBlog)
+blogRouter.route('/update-blog').put(updateSingleBlog)
+blogRouter.route('/delete-blog/:id').delete(deleteBlog)
 
-module.exports = videoRouter;
+module.exports = blogRouter;

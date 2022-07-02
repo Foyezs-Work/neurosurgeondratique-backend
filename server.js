@@ -10,6 +10,7 @@ const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 var cors = require('cors');
 const photoRouter = require("./routes/photoGalleryRoute");
 const videoRouter = require("./routes/videoGalleryRoute");
+const blogRouter = require("./routes/blogRoute");
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/photos', photoRouter)
 app.use('/api/videos', videoRouter)
+app.use('/api/blog', blogRouter)
 
 app.use(notFound)
 app.use(errorHandler)
