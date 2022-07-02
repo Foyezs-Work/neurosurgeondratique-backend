@@ -10,7 +10,7 @@ const photoGalleryCreate = asyncHandler(async (req, res) => {
 
     if (!title || !photo) {
         res.status(400);
-        throw new Error("Title & Photo are required!");
+        throw new Error("Title & Photo input are required!");
     }
 
     const createdPhoto = await photoGallery.create({
@@ -23,7 +23,7 @@ const photoGalleryCreate = asyncHandler(async (req, res) => {
             _id: createdPhoto._id,
             title: createdPhoto.title,
             photo: createdPhoto.photo,
-            message: "You have been successfully added new photo"
+            message: "You have successfully added a new photo"
         });
     } else {
         res.status(400);
@@ -40,11 +40,11 @@ const getPhotosList = asyncHandler(async (req, res) => {
     if (getPhotosList) {
         res.status(201).json({
             getPhotosList,
-            message: "Photos gallery fatched successfully!"
+            message: "Photo gallery loaded successfully!"
         });
     } else {
         res.status(400);
-        throw new Error("Failed to fatch photos gallery");
+        throw new Error("Failed to load photo gallery");
     }
 });
 
@@ -59,11 +59,11 @@ const getSinglePhotos = asyncHandler(async (req, res) => {
     if (singlePhotos) {
         res.status(201).json({
             singlePhotos,
-            message: "Photos fatched successfully!"
+            message: "Photo loaded successfully!"
         });
     } else {
         res.status(400);
-        throw new Error("Failed to fatch photos");
+        throw new Error("Failed to load photo");
     }
 });
 
@@ -83,11 +83,11 @@ const updateSinglePhotos = asyncHandler(async (req, res) => {
 
     if (updateOne) {
         res.status(201).json({
-            message: "Photos updated successfully!"
+            message: "Update done successfully!"
         });
     } else {
         res.status(400);
-        throw new Error("Failed to update photos");
+        throw new Error("Failed to update");
     }
 });
 
@@ -101,11 +101,11 @@ const updateSinglePhotos = asyncHandler(async (req, res) => {
 
     if (deletedPhoto) {
         res.status(201).json({
-            message: "Photos deleted successfully!"
+            message: "Photo deleted successfully!"
         });
     } else {
         res.status(400);
-        throw new Error("Failed to delete photos");
+        throw new Error("Failed to delete photo");
     }
 });
 
