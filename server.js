@@ -9,6 +9,7 @@ const colors = require("colors");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 var cors = require('cors');
 const photoRouter = require("./routes/photoGalleryRoute");
+const videoRouter = require("./routes/videoGalleryRoute");
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/photos', photoRouter)
+app.use('/api/videos', videoRouter)
 
 app.use(notFound)
 app.use(errorHandler)
