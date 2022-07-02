@@ -15,7 +15,7 @@ const photoGalleryCreate = asyncHandler(async (req, res) => {
 
     const createdPhoto = await photoGallery.create({
         title,
-        photo
+        photo,
     });
 
     if (createdPhoto) {
@@ -23,6 +23,7 @@ const photoGalleryCreate = asyncHandler(async (req, res) => {
             _id: createdPhoto._id,
             title: createdPhoto.title,
             photo: createdPhoto.photo,
+            status: createdPhoto.status,
             message: "You have successfully added a new photo"
         });
     } else {
@@ -72,12 +73,13 @@ const getSinglePhotos = asyncHandler(async (req, res) => {
  */
 const updateSinglePhotos = asyncHandler(async (req, res) => {
 
-    const { _id, title, photo } = req.body;
+    const { _id, title, photo, status } = req.body;
 
     const updateOne = await photoGallery.updateOne({ _id }, {
         $set: {
             title: title,
-            photo: photo
+            photo: photo,
+            status: status
         }
     });
 
@@ -95,9 +97,9 @@ const updateSinglePhotos = asyncHandler(async (req, res) => {
 /**
  * Delete Single Photos
  */
- const deletePhoto = asyncHandler(async (req, res) => {
+const deletePhoto = asyncHandler(async (req, res) => {
 
-   const deletedPhoto = await photoGallery.findByIdAndDelete(req.params.id)
+    const deletedPhoto = await photoGallery.findByIdAndDelete(req.params.id)
 
     if (deletedPhoto) {
         res.status(201).json({
